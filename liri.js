@@ -23,12 +23,13 @@ var nodeArg2 = process.argv[3];
 //insted of ajax call, you can use the twitter npm
 function myTweets(){
 	if(nodeArg1 === "my-tweets"){
+		//Grabbing the file keys.js, then grabbing the twitterKeys export.
 		var client = new twitter(keys.twitterKeys);
 		var params = {
-    	screen_name: "edricAtUCLA"
+    	screen_name: "EdricAtUCLA"
   		};
 
-		client.get('search/tweets', params, function(error, tweets, response) {
+		client.get("statuses/user_timeline", {q: params} , function(error, tweets, response) {
    			for (var i = 0; i < tweets.length; i++) {
 	        	console.log(tweets[i].created_at);
 	        	console.log("");
