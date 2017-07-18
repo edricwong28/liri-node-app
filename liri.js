@@ -12,12 +12,10 @@ var keyList = keys.twitterKeys;
 var keysArr = [];
 var nodeArg1 = process.argv[2];
 var nodeArg2 = process.argv[3];
-// var client = new twitter({
-//   consumer_key: 'ie5tNWqxsiH03WUZaO2DJCKAy',
-//   consumer_secret: 'R6OtB5AjPyzPd3Kd7NBCJpt5bB9RB2T00FTDds2q7CKPYdHFfj',
-//   access_token_key: '885644731367120896-cGqQCrbcRVbx3TTv8q5nsajjPGUiqq7',
-//   access_token_secret: 'nZunCxqt3dRHMT5cb0SL7gPjIafOxRF7a6EhC5uDbt6Rd',
-// });
+var spotify = new Spotify({
+  id: "b249ae6a0bad4f96b7e3ae71d72796fd",
+  secret: "10261a51b35a4f9aa042af8d42666da9"
+});
 
 
 //insted of ajax call, you can use the twitter npm
@@ -43,6 +41,14 @@ function spotifyThis(songName){
 	if(nodeArg1 === "spotify-this-song"){
 
 		var songName = nodeArg2;
+		// Writes to the log.txt file
+		function getArtistNames(artist) {
+		  return artist.name;
+		};
+		function getMeSpotify(songName) {
+		  if (songName === undefined) {
+		    songName = "What's my age again";
+		  }
 
 		 spotify.search(
 	    {
